@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Users</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+  <a href="/users/new" class="button">Add New User</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.userId}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:text="${user.passwordHash}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.phoneNumber}"></td>
+      <td th:text="${user.role != null ? user.role.roleName : 'No role'}"></td>
+      <td>
+        <a th:href="@{/users/edit/{id}(id=${user.userId})}" class="button">Edit</a>
+        <a th:href="@{/users/delete/{id}(id=${user.userId})}" class="button" style="background-color: #d9534f;">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

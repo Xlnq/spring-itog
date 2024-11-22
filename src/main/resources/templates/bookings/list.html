@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bookings</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+    <a href="/bookings/new" class="button">Add New Booking</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Property</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="booking : ${bookings}">
+            <td th:text="${booking.id}"></td>
+            <td th:text="${booking.user.username}"></td>
+            <td th:text="${booking.property.propertyName}"></td>
+            <td th:text="${booking.startDate}"></td>
+            <td th:text="${booking.endDate}"></td>
+            <td th:text="${booking.totalPrice}"></td>
+            <td th:text="${booking.status}"></td>
+            <td>
+                <a th:href="@{/bookings/edit/{id}(id=${booking.id})}" class="button">Edit</a>
+                <a th:href="@{/bookings/delete/{id}(id=${booking.id})}" class="button" style="background-color: #d9534f;">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

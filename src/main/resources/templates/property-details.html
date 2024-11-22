@@ -1,0 +1,45 @@
+<!-- src/main/resources/templates/property-details.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Details - RentHub</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Вставляем header -->
+<div th:replace="~{fragments/header.html}"></div>
+
+<!-- Контент страницы -->
+<div class="container mt-4">
+  <h2>Property Details</h2>
+
+  <!-- Информация о недвижимости -->
+  <div class="property-details">
+    <div class="card">
+      <img th:src="@{${property.photoUrl}}" class="card-img-top" alt="Property Image" />
+      <div class="card-body">
+        <h5 class="card-title" th:text="${property.propertyName}"></h5>
+        <p class="card-text">
+          <strong>Owner:</strong> <span th:text="${property.owner.username}"></span><br />
+          <strong>Type:</strong> <span th:text="${property.type.getTypeName()}"></span><br />
+          <strong>Address:</strong> <span th:text="${property.address}"></span><br />
+          <strong>Price per Month:</strong> <span th:text="${property.pricePerMonth}"></span><br />
+          <strong>Price per Week:</strong> <span th:text="${property.pricePerWeek}"></span><br />
+          <strong>Price per Night:</strong> <span th:text="${property.pricePerNight}"></span><br />
+          <strong>Capacity:</strong> <span th:text="${property.capacity}"></span> people<br />
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <a href="/" class="btn btn-secondary mt-3">Back to Properties</a>
+</div>
+
+<!-- Вставляем footer -->
+<div th:replace="~{fragments/footer.html}"></div>
+
+</body>
+</html>

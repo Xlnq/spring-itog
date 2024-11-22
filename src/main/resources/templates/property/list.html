@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Properties</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+  <a href="/properties/new" class="button">Add New Property</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Owner</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Price per Month</th>
+      <th>Price per Week</th>
+      <th>Price per Night</th>
+      <th>Capacity</th>
+      <th>Available</th>
+      <th>Photo</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="property : ${properties}">
+      <td th:text="${property.propertyId}"></td>
+      <td th:text="${property.owner.username}"></td>
+      <td th:text="${property.propertyName}"></td>
+      <td th:text="${property.type.typeName}"></td>
+      <td th:text="${property.pricePerMonth}"></td>
+      <td th:text="${property.pricePerWeek}"></td>
+      <td th:text="${property.pricePerNight}"></td>
+      <td th:text="${property.capacity}"></td>
+      <td th:text="${property.available ? 'Yes' : 'No'}"></td>
+      <td th:text="${property.photoUrl}"></td>
+      <td>
+        <a th:href="@{/properties/edit/{id}(id=${property.propertyId})}" class="button">Edit</a>
+        <a th:href="@{/properties/delete/{id}(id=${property.propertyId})}" class="button" style="background-color: #d9534f;">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

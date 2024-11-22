@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Reviews</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+  <a href="/reviews/new" class="button">Add New Review</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Property</th>
+      <th>Rating</th>
+      <th>Comment</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="review : ${reviews}">
+      <td th:text="${review.reviewId}"></td>
+      <td th:text="${review.user.username}"></td>
+      <td th:text="${review.property.propertyName}"></td>
+      <td th:text="${review.rating}"></td>
+      <td th:text="${review.reviewText}"></td>
+      <td>
+        <a th:href="@{/reviews/edit/{id}(id=${review.reviewId})}" class="button">Edit</a>
+        <a th:href="@{/reviews/delete/{id}(id=${review.reviewId})}" class="button" style="background-color: #d9534f;">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

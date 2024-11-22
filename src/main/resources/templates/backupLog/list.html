@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Backup Logs</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+  <a href="/backup-logs/new" class="button">Add New Log</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Admin</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="log : ${backupLogs}">
+      <td th:text="${log.logId}"></td>
+      <td th:text="${log.backupDate}"></td>
+      <td th:text="${log.backupStatus}"></td>
+      <td th:text="${log.admin.username}"></td>
+      <td>
+        <a th:href="@{/backup-logs/edit/{id}(id=${log.logId})}" class="button">Edit</a>
+        <a th:href="@{/backup-logs/delete/{id}(id=${log.logId})}" class="button" style="background-color: #d9534f;">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add/Edit Property</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Add or Edit Property</h1>
+  </div>
+</header>
+<div class="container">
+  <form th:action="@{/properties/save}" th:object="${property}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <input type="hidden" th:field="*{propertyId}" />
+    </div>
+    <div class="form-group">
+      <label for="owner">Owner:</label>
+      <select id="owner" name="owner" th:field="*{owner}" required>
+        <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user.username}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="propertyName">Property Name:</label>
+      <input type="text" id="propertyName" name="propertyName" th:field="*{propertyName}" required>
+    </div>
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <select id="type" name="type" th:field="*{type.typeId}" required>
+        <option th:each="type : ${types}" th:value="${type.typeId}" th:text="${type.typeName}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" th:field="*{address}">
+    </div>
+    <div class="form-group">
+      <label for="pricePerMonth">Price Per Month:</label>
+      <input type="number" id="pricePerMonth" name="pricePerMonth" th:field="*{pricePerMonth}" step="0.01">
+    </div>
+    <div class="form-group">
+      <label for="pricePerWeek">Price Per Week:</label>
+      <input type="number" id="pricePerWeek" name="pricePerWeek" th:field="*{pricePerWeek}" step="0.01">
+    </div>
+    <div class="form-group">
+      <label for="pricePerNight">Price Per Night:</label>
+      <input type="number" id="pricePerNight" name="pricePerNight" th:field="*{pricePerNight}" step="0.01">
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacity:</label>
+      <input type="number" id="capacity" name="capacity" th:field="*{capacity}" step="1">
+    </div>
+    <div class="form-group">
+      <label for="available">Available:</label>
+      <input type="checkbox" id="available" name="available" th:field="*{available}">
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input type="file" id="photo" name="photo" accept="image/*">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="button">Save</button>
+    </div>
+  </form>
+
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

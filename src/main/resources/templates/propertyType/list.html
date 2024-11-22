@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Property Types</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+  <a href="/property-types/new" class="button">Add New Property Type</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="propertyType : ${propertyTypes}">
+      <td th:text="${propertyType.typeId}"></td>
+      <td th:text="${propertyType.typeName}"></td>
+      <td>
+        <a th:href="@{/property-types/edit/{id}(id=${propertyType.typeId})}" class="button">Edit</a>
+        <a th:href="@{/property-types/delete/{id}(id=${propertyType.typeId})}" class="button" style="background-color: #d9534f;">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

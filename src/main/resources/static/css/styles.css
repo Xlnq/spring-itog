@@ -1,0 +1,235 @@
+/* Общие стили для SkillFactory App */
+
+html, body {
+    height: 100%;  /* Ensure the body takes full height */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Use flexbox for layout */
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;  /* Push footer to the bottom */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    flex-grow: 1;  /* Allow the content area to grow */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: white;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f1f1f1;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Основной контейнер для карточек */
+.property-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Две карточки на строке */
+    gap: 20px; /* Расстояние между карточками */
+    padding: 20px;
+}
+
+/* Оформление карточки */
+.property-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Эффект при наведении на карточку */
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Изображение внутри карточки */
+.card-img-top {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+/* Оформление тела карточки */
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card-text strong {
+    color: #333;
+}
+
+/* Кнопка для просмотра деталей */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Distribute space between logo, nav links, and auth links */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the navbar */
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: 60px;  /* Increased size of the logo */
+    height: 60px; /* Increased size of the logo */
+    margin-right: 10px; /* Space between the logo and the brand text */
+}
+
+.navbar-brand {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation Links Styles */
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-grow: 1; /* Allow the nav links to take up available space */
+    justify-content: center; /* Center the navigation items */
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ffcc00;
+}
+
+/* Authentication Links (Login & Sign Up) */
+.auth-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+.auth-links li {
+    margin-left: 20px; /* Space between the Login and Sign Up links */
+}
+
+.auth-links .nav-link {
+    font-weight: bold;
+    color: white;
+}
+
+.auth-links .nav-link:hover {
+    color: #ffcc00;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #ffcc00;
+}

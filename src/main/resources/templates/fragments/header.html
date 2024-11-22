@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentHub - Your Property Rental Platform</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/images/RentIcon.png" alt="RentHub Logo" class="navbar-logo">
+                <a href="/home" class="navbar-brand">RentHub</a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="/properties" class="nav-link" sec:authorize="hasRole('ROLE_LANDLORD') or hasRole('ROLE_ADMIN')">Properties</a></li>
+                <li><a href="/property-types" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Property Types</a></li>
+                <li><a href="/bookings" class="nav-link" sec:authorize="hasRole('ROLE_LANDLORD') or hasRole('ROLE_ADMIN')">Bookings</a></li>
+                <li><a href="/payments" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Payments</a></li>
+                <li><a href="/reviews" class="nav-link" sec:authorize="hasRole('ROLE_LANDLORD') or hasRole('ROLE_ADMIN')">Reviews</a></li>
+                <li><a href="/users" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Users</a></li>
+                <li><a href="/roles" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Roles</a></li>
+                <li><a href="/backup-logs" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Backup Logs</a></li>
+            </ul>
+
+            <ul class="auth-links">
+                <li><a href="/login" class="nav-link">Login</a></li>
+                <li><a href="/registration" class="nav-link">Sign Up</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+</body>
+</html>

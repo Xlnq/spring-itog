@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Payments</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{fragments/header.html}"></div>
+<div class="container">
+  <a href="/payments/new" class="button">Add New Payment</a>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Booking</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="payment : ${payments}">
+      <td th:text="${payment.paymentId}"></td>
+      <td th:text="${payment.booking.id}"></td>
+      <td th:text="${payment.paymentAmount}"></td>
+      <td th:text="${payment.paymentDate}"></td>
+      <td th:text="${payment.paymentStatus}"></td>
+      <td>
+        <a th:href="@{/payments/edit/{id}(id=${payment.paymentId})}" class="button">Edit</a>
+        <a th:href="@{/payments/delete/{id}(id=${payment.paymentId})}" class="button" style="background-color: #d9534f;">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>

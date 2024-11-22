@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add/Edit Review</title>
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Add or Edit Review</h1>
+  </div>
+</header>
+<div class="container">
+  <form th:action="@{/reviews/save}" th:object="${review}" method="post">
+    <div class="form-group">
+      <input type="hidden" th:field="*{reviewId}" />
+    </div>
+    <div class="form-group">
+      <label for="user">User:</label>
+      <select id="user" name="user" th:field="*{user.userId}" required>
+        <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user.username}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="property">Property:</label>
+      <select id="property" name="property" th:field="*{property.propertyId}" required>
+        <option th:each="property : ${properties}" th:value="${property.propertyId}" th:text="${property.propertyName}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <input type="number" id="rating" name="rating" th:field="*{rating}" min="1" max="5" required>
+    </div>
+    <div class="form-group">
+      <label for="review_text">Comment:</label>
+      <textarea id="review_text" name="review_text" th:field="*{reviewText}" required></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="button">Save</button>
+    </div>
+  </form>
+</div>
+<div th:replace="~{fragments/footer.html}"></div>
+</body>
+</html>
