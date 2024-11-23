@@ -50,8 +50,8 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/registration", "/login").permitAll()
-                        .requestMatchers("/reviews").hasAnyRole("USER", "LANDLORD")
-                        .requestMatchers("/properties").hasRole("LANDLORD")
+                        .requestMatchers("/reviews").hasAnyRole("USER", "LANDLORD", "ADMIN")
+                        .requestMatchers("/properties").hasAnyRole("LANDLORD", "ADMIN")
                         .requestMatchers("/property-types", "/payments", "/users", "/roles", "/backup-logs", "/bookings").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

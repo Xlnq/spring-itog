@@ -57,7 +57,7 @@ public class AuthController {
         user.setPasswordHash(passwordEncoder.encode(password));
         user.setEmail(email);
         user.setPhoneNumber(phone);
-        user.setRole(roleService.findRoleByName("ADMIN"));
+        user.setRole(roleService.findRoleByName("USER"));
 
         userService.save(user);
 

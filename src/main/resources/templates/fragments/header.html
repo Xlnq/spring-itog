@@ -17,7 +17,7 @@
             </div>
 
             <ul class="nav-links">
-                <li><a href="/properties" class="nav-link" sec:authorize="hasRole('ROLE_LANDLORD') or hasRole('ROLE_ADMIN')">Properties</a></li>
+                <li><a href="/properties" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Properties</a></li>
                 <li><a href="/property-types" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Property Types</a></li>
                 <li><a href="/bookings" class="nav-link" sec:authorize="hasRole('ROLE_LANDLORD') or hasRole('ROLE_ADMIN')">Bookings</a></li>
                 <li><a href="/payments" class="nav-link" sec:authorize="hasRole('ROLE_ADMIN')">Payments</a></li>
